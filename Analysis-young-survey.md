@@ -336,7 +336,107 @@ ggplot(melted_healthy, aes(x = cat, y = value, fill = variable)) +
 ![altText](https://github.com/avneet14027/Young-People-Survey/blob/master/healthy_gender.png)
 
 
-###
+##### Eating To Survive
+```R
+Survive_village_town_gender<-with(urban_rural,table(Village...town,Eating.to.survive,Gender))
+test_survive<-data.frame(level=c("1","2","3","4","5"),city_men=c(Survive_village_town_gender[2,1,3],Survive_village_town_gender[2,2,3],Survive_village_town_gender[2,3,3],Survive_village_town_gender[2,4,3],Survive_village_town_gender[2,5,3]),city_women=c(Survive_village_town_gender[2,1,2],Survive_village_town_gender[2,2,2],Survive_village_town_gender[2,3,2],Survive_village_town_gender[2,4,2],Survive_village_town_gender[2,5,2]),village_men=c(Survive_village_town_gender[3,1,3],Survive_village_town_gender[3,2,3],Survive_village_town_gender[3,3,3],Survive_village_town_gender[3,4,3],Survive_village_town_gender[3,5,3]),                        village_women=c(Survive_village_town_gender[3,1,2],Survive_village_town_gender[3,2,2],Survive_village_town_gender[3,3,2],Survive_village_town_gender[3,4,2],Survive_village_town_gender[3,5,2])) 
+
+melted_survive <- melt(test_survive, "level")
+melted_survive$cat <- ''
+melted_survive[melted_survive$variable != 'village_men' & melted_survive$variable != 'village_women' ,]$cat <- "city"
+melted_survive[melted_survive$variable != 'city_men' & melted_survive$variable != 'city_women' ,]$cat <- "village"
+ggplot(melted_survive, aes(x = cat, y = value, fill = variable)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ level) + scale_fill_hue(l=70) + scale_fill_manual(values=c("seagreen2", "slateblue1", "coral", "deepskyblue1")) + facet_grid(~ level)
+```
+![altText](https://github.com/avneet14027/Young-People-Survey/blob/master/survive.png)
+
+
+###### Socializing
+
+```R
+Socializing_village_town_gender<-with(urban_rural,table(Village...town,Socializing,Gender))
+test_Socializing  <- data.frame(level=c("1","2","3","4","5"),                            city_men=c(Socializing_village_town_gender[2,1,3],Socializing_village_town_gender[2,2,3],Socializing_village_town_gender[2,3,3],Socializing_village_town_gender[2,4,3],Socializing_village_town_gender[2,5,3]),                          city_women=c(Socializing_village_town_gender[2,1,2],Socializing_village_town_gender[2,2,2],Socializing_village_town_gender[2,3,2],Socializing_village_town_gender[2,4,2],Socializing_village_town_gender[2,5,2]) ,                            village_men=c(Socializing_village_town_gender[3,1,3],Socializing_village_town_gender[3,2,3],Socializing_village_town_gender[3,3,3],Socializing_village_town_gender[3,4,3],Socializing_village_town_gender[3,5,3]),                           village_women=c(Socializing_village_town_gender[3,1,2],Socializing_village_town_gender[3,2,2],Socializing_village_town_gender[3,3,2],Socializing_village_town_gender[3,4,2],Socializing_village_town_gender[3,5,2])) 
+
+melted_Socializing <- melt(test_Socializing, "level")
+melted_Socializing$cat <- ''
+melted_Socializing[melted_Socializing$variable != 'village_men' & melted_Socializing$variable != 'village_women' ,]$cat <- "city"
+melted_Socializing[melted_Socializing$variable != 'city_men' & melted_Socializing$variable != 'city_women' ,]$cat<-"village"
+ggplot(melted_Socializing, aes(x = cat, y = value, fill = variable)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ level) + scale_fill_hue(l=70) + scale_fill_manual(values=c("seagreen2", "slateblue1", "coral", "deepskyblue1")) + facet_grid(~ level)
+```
+![altText](https://github.com/avneet14027/Young-People-Survey/blob/master/socializing.png)
+
+
+###### Happiness.in.life
+```R
+happy_village_town_gender<-with(urban_rural,table(Village...town,Happiness.in.life,Gender))
+
+test_happy<-data.frame(level=c("1","2","3","4","5"),city_men=c(happy_village_town_gender[2,1,3],happy_village_town_gender[2,2,3],happy_village_town_gender[2,3,3],happy_village_town_gender[2,4,3],happy_village_town_gender[2,5,3]),                                     city_women=c(happy_village_town_gender[2,1,2],happy_village_town_gender[2,2,2],happy_village_town_gender[2,3,2],happy_village_town_gender[2,4,2],happy_village_town_gender[2,5,2]) ,                                 village_men=c(happy_village_town_gender[3,1,3],happy_village_town_gender[3,2,3],happy_village_town_gender[3,3,3],happy_village_town_gender[3,4,3],happy_village_town_gender[3,5,3]),                               village_women=c(happy_village_town_gender[3,1,2],happy_village_town_gender[3,2,2],happy_village_town_gender[3,3,2],happy_village_town_gender[3,4,2],happy_village_town_gender[3,5,2])) 
+
+melted_happy <- melt(test_happy, "level")
+melted_happy$cat <- ''
+melted_happy[melted_happy$variable != 'village_men' & melted_happy$variable != 'village_women' ,]$cat <- "city"
+melted_happy[melted_happy$variable != 'city_men' & melted_happy$variable != 'city_women' ,]$cat <- "village"
+ggplot(melted_happy, aes(x = cat, y = value, fill = variable)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ level) + scale_fill_hue(l=70) + scale_fill_manual(values=c("seagreen2", "slateblue1", "coral", "deepskyblue1")) + facet_grid(~ level)
+```
+
+![altText](https://github.com/avneet14027/Young-People-Survey/blob/master/happy.png)
+
+
+###### Life.struggles
+```R
+struggle_village_town_gender<-with(urban_rural,table(Village...town,Life.struggles,Gender))
+
+test_struggle  <- data.frame(level=c("1","2","3","4","5"), city_men=c(struggle_village_town_gender[2,1,3],struggle_village_town_gender[2,2,3],struggle_village_town_gender[2,3,3],struggle_village_town_gender[2,4,3],struggle_village_town_gender[2,5,3]),     
+city_women=c(struggle_village_town_gender[2,1,2],struggle_village_town_gender[2,2,2],struggle_village_town_gender[2,3,2],struggle_village_town_gender[2,4,2],struggle_village_town_gender[2,5,2]) , 
+village_men=c(struggle_village_town_gender[3,1,3],struggle_village_town_gender[3,2,3],struggle_village_town_gender[3,3,3],struggle_village_town_gender[3,4,3],struggle_village_town_gender[3,5,3]),
+village_women=c(struggle_village_town_gender[3,1,2],struggle_village_town_gender[3,2,2],struggle_village_town_gender[3,3,2],struggle_village_town_gender[3,4,2],struggle_village_town_gender[3,5,2])) 
+
+melted_struggle <- melt(test_struggle, "level")
+melted_struggle$cat <- ''
+melted_struggle[melted_struggle$variable != 'village_men' & melted_struggle$variable != 'village_women' ,]$cat <- "city"
+melted_struggle[melted_struggle$variable != 'city_men' & melted_struggle$variable != 'city_women' ,]$cat <- "village"
+ggplot(melted_struggle, aes(x = cat, y = value, fill = variable)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ level) + scale_fill_hue(l=70) + scale_fill_manual(values=c("seagreen2", "slateblue1", "coral", "deepskyblue1")) + facet_grid(~ level)
+```
+
+![altText](https://github.com/avneet14027/Young-People-Survey/blob/master/struggle.png)
+
+###### Internet.usage
+```R
+internet_village_town_gender<-with(urban_rural,table(Village...town,Internet.usage,Gender))
+
+test_internet  <- data.frame(level=c("few hours a day","less than an hour a day","most of the day","no time at all"),
+city_men=c(internet_village_town_gender[2,1,3],internet_village_town_gender[2,2,3],internet_village_town_gender[2,3,3],internet_village_town_gender[2,4,3]),
+city_women=c(internet_village_town_gender[2,1,2],internet_village_town_gender[2,2,2],internet_village_town_gender[2,3,2],internet_village_town_gender[2,4,2]) , 
+village_men=c(internet_village_town_gender[3,1,3],internet_village_town_gender[3,2,3],internet_village_town_gender[3,3,3],internet_village_town_gender[3,4,3]),
+village_women=c(internet_village_town_gender[3,1,2],internet_village_town_gender[3,2,2],internet_village_town_gender[3,3,2],internet_village_town_gender[3,4,2])) 
+
+melted_internet <- melt(test_internet, "level")
+melted_internet$cat <- ''
+melted_internet[melted_internet$variable != 'village_men' & melted_internet$variable != 'village_women' ,]$cat <- "city"
+melted_internet[melted_internet$variable != 'city_men' & melted_internet$variable != 'city_women' ,]$cat <- "village"
+ggplot(melted_internet, aes(x = cat, y = value, fill = variable)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ level) + scale_fill_hue(l=70) + scale_fill_manual(values=c("seagreen2", "slateblue1", "coral", "deepskyblue1")) + facet_grid(~ level)
+```
+![altText](https://github.com/avneet14027/Young-People-Survey/blob/master/internet.png)
+
+
+###### Education
+```R
+Education_village_town_gender<-with(urban_rural,table(Village...town,Education,Gender))
+
+test_Education  <- data.frame(level=c("college/bachelor degree","currently a primary school pupil","doctorate degree"," masters degree","primary school","secondary school"),  city_men=c(Education_village_town_gender[2,1,3],Education_village_town_gender[2,2,3],Education_village_town_gender[2,3,3],Education_village_town_gender[2,4,3],Education_village_town_gender[2,5,3],Education_village_town_gender[2,6,3]),     city_women=c(Education_village_town_gender[2,1,2],Education_village_town_gender[2,2,2],Education_village_town_gender[2,3,2],Education_village_town_gender[2,4,2],Education_village_town_gender[2,5,2],Education_village_town_gender[2,6,2]) ,village_men=c(Education_village_town_gender[3,1,3],Education_village_town_gender[3,2,3],Education_village_town_gender[3,3,3],Education_village_town_gender[3,4,3],Education_village_town_gender[3,5,3],Education_village_town_gender[3,6,3]),village_women=c(Education_village_town_gender[3,1,2],Education_village_town_gender[3,2,2],Education_village_town_gender[3,3,2],Education_village_town_gender[3,4,2],Education_village_town_gender[3,5,2],Education_village_town_gender[3,6,3])) 
+
+melted_Education <- melt(test_Education, "level")
+melted_Education$cat <- ''
+melted_Education[melted_Education$variable != 'village_men' & melted_Education$variable != 'village_women' ,]$cat <- "city"
+melted_Education[melted_Education$variable != 'city_men' & melted_Education$variable != 'city_women' ,]$cat <- "village"
+ggplot(melted_Education, aes(x = cat, y = value, fill = variable)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ level) + scale_fill_hue(l=70) + scale_fill_manual(values=c("seagreen2", "slateblue1", "coral", "deepskyblue1")) + facet_grid(~ level)
+```
+![altText](https://github.com/avneet14027/Young-People-Survey/blob/master/education.png)
 
 
 
