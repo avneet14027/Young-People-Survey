@@ -2,8 +2,8 @@
 Source of data: https://www.kaggle.com/miroslavsabo/young-people-survey<br>
 Programming Language: R<br>
 Tools: RStudio<br>
-The young people survey is a dataset released by kaggle about their hobbies, interests, certain demographic factors, educatinal
-quaalification of todays youth, movie and music preferences, personal feelings, personal choices on life sruggles, happiness index etc.
+The young people survey is a dataset released by kaggle about their hobbies, interests, certain demographic factors, educational
+qualification of todays youth, movie and music preferences, personal feelings, personal choices on life sruggles, happiness index etc.
 The goal of this analysis is to ponder upon the nature of today's youth who are going to be leaders of tomorrow. Also, the reason
 I chose this dataset is to know the general trend among todays youth in terms of music and movie preferences and
 analysisng social quality of life based on personal factors and decisions. Also, this dataset gives us an insight into
